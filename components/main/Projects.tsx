@@ -1,33 +1,58 @@
+// components/Projects.tsx
+'use client';
+
 import React from "react";
 import ProjectCard from "../sub/ProjectCard";
 
 const Projects = () => {
+  const projects = [
+    {
+      title: "Bank Managment",
+      description:
+        "The project is a bank management system that allows users to manage accounts, perform transactions, and view financial data through a web based interface make it short",
+      tech: ["frontend", "mysql", "database"],
+      demoLink: "",
+      githubLink: "",
+      image: "/java.png",
+    },
+    {
+      title: "Invigilation management system",
+      description:
+        "A web-based platform that automates exam duty allocation, allowing teachers to choose available invigilation slots based on admin-defined conditions. It ensures fair distribution, avoids scheduling conflicts, and enhances transparency and efficiency in the process.",
+      tech: ["frontend", "mysql", "database"],
+      demoLink: "",
+      githubLink: "",
+      image: "/java.png",
+    },
+    {
+      title: "Major Project Coming soon :)",
+      description:
+        "coming soooon....",
+      tech: ["React", "Chart.js", "REST API"],
+      demoLink: "",
+      githubLink: "",
+      image: "/java.png",
+    },
+  ];
+
   return (
-    <div
-      className="flex flex-col items-center justify-center py-20"
+    <section
       id="projects"
+      className="w-full min-h-screen py-20 px-5 md:px-20 bg-[#0A0A23] text-white flex flex-col items-center"
     >
-      <h1 className="text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 py-20">
+      <a
+        href="#projects"
+        className="text-4xl font-bold mb-10 bg-gradient-to-r from-purple-400 to-cyan-500 bg-clip-text text-transparent transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_10px_rgba(165,180,252,0.8)]"
+      >
         My Projects
-      </h1>
-      <div className="h-full w-full flex flex-col md:flex-row gap-10 px-10">
-        <ProjectCard
-          src="/NextWebsite.png"
-          title="Modern Next.js Portfolio"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <ProjectCard
-          src="/CardImage.png"
-          title="Interactive Website Cards"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <ProjectCard
-          src="/SpaceWebsite.png"
-          title="Space Themed Website"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
+      </a>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 w-full">
+        {projects.map((project, idx) => (
+          <ProjectCard key={idx} {...project} />
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
