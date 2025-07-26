@@ -68,4 +68,16 @@
 
 html {
   scroll-behavior: smooth;
+  /* ✅ Hide the Next.js Dev Tools Toast/Badge */
+[data-nextjs-toast],
+[data-nextjs-dev-overlay],
+[data-nextjs-devtools-button],
+[data-next-badge-root],
+[data-next-mark] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 }

@@ -1,3 +1,5 @@
+// components/main/Navbar.tsx
+
 import { Socials } from "@/constants";
 import Image from "next/image";
 import React from "react";
@@ -17,7 +19,6 @@ const Navbar = () => {
             height={50}
             className="cursor-pointer hover:animate-slowspin"
           />
-
           <span className="font-bold ml-[10px] hidden md:block text-gray-300">
             Gaurav's Portfolio
           </span>
@@ -37,24 +38,24 @@ const Navbar = () => {
           </div>
         </div>
 
-      <div className="flex flex-row gap-5">
-  {Socials.map((social) => (
-    <a
-      key={social.name}
-      href={social.link} // e.g., "https://linkedin.com/in/yourname"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Image
-        src={social.src}
-        alt={social.name}
-        width={24}
-        height={24}
-      />
-    </a>
-  ))}
-</div>
-
+        <div className="flex flex-row gap-5">
+          {Array.isArray(Socials) &&
+            Socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={social.src}
+                  alt={social.name}
+                  width={24}
+                  height={24}
+                />
+              </a>
+            ))}
+        </div>
       </div>
     </div>
   );
