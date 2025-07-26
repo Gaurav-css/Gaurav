@@ -152,7 +152,8 @@ const Footer = () => {
                 </button>
 
                 <h2 className="text-3xl font-extrabold text-center mb-6 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
-                  Let's Talk!
+                  <h2>Let&apos;s Talk!</h2>
+                  !
                 </h2>
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
