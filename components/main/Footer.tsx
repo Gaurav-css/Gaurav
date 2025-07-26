@@ -2,12 +2,55 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { RxDiscordLogo, RxGithubLogo, RxInstagramLogo, RxTwitterLogo, RxLinkedinLogo } from "react-icons/rx";
+import {
+  RxDiscordLogo,
+  RxGithubLogo,
+  RxInstagramLogo,
+  RxTwitterLogo,
+  RxLinkedinLogo,
+} from "react-icons/rx";
 import { FaYoutube } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => {
+          setIsModalOpen(false);
+          setStatus("");
+        }, 3000);
+      } else {
+        setStatus("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("An error occurred.");
+    }
+  };
 
   return (
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-[15px]">
@@ -16,10 +59,20 @@ const Footer = () => {
           {/* Community */}
           <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
             <div className="font-bold text-[16px]">Community</div>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="flex items-center my-[15px] text-[15px] hover:underline">
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center my-[15px] text-[15px] hover:underline"
+            >
               <RxGithubLogo className="mr-2" /> Github
             </a>
-            <a href="https://discord.com/invite/yourserver" target="_blank" rel="noopener noreferrer" className="flex items-center my-[15px] text-[15px] hover:underline">
+            <a
+              href="https://discord.com/invite/yourserver"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center my-[15px] text-[15px] hover:underline"
+            >
               <RxDiscordLogo className="mr-2" /> Discord
             </a>
           </div>
@@ -27,13 +80,28 @@ const Footer = () => {
           {/* Social Media */}
           <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
             <div className="font-bold text-[16px]">Social Media</div>
-            <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" className="flex items-center my-[15px] text-[15px] hover:underline">
+            <a
+              href="https://instagram.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center my-[15px] text-[15px] hover:underline"
+            >
               <RxInstagramLogo className="mr-2" /> Instagram
             </a>
-            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="flex items-center my-[15px] text-[15px] hover:underline">
+            <a
+              href="https://twitter.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center my-[15px] text-[15px] hover:underline"
+            >
               <RxTwitterLogo className="mr-2" /> Twitter
             </a>
-            <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener noreferrer" className="flex items-center my-[15px] text-[15px] hover:underline">
+            <a
+              href="https://linkedin.com/in/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center my-[15px] text-[15px] hover:underline"
+            >
               <RxLinkedinLogo className="mr-2" /> LinkedIn
             </a>
           </div>
@@ -47,7 +115,10 @@ const Footer = () => {
             >
               Contact Us
             </button>
-            <a href="mailto:gky89552@gmail.com" className="flex items-center my-[15px] text-[15px] hover:underline">
+            <a
+              href="mailto:gky89552@gmail.com"
+              className="flex items-center my-[15px] text-[15px] hover:underline"
+            >
               gky89552@gmail.com
             </a>
           </div>
@@ -84,13 +155,16 @@ const Footer = () => {
                   Let's Talk!
                 </h2>
 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div>
                     <label className="block mb-1 text-sm font-semibold">Name</label>
                     <input
                       type="text"
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="John Doe"
                       className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
                     />
                   </div>
 
@@ -98,17 +172,23 @@ const Footer = () => {
                     <label className="block mb-1 text-sm font-semibold">Email</label>
                     <input
                       type="email"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="you@example.com"
                       className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
                     />
                   </div>
 
                   <div>
                     <label className="block mb-1 text-sm font-semibold">Message</label>
                     <textarea
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
                       placeholder="Write your message here..."
                       rows={4}
                       className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
                     ></textarea>
                   </div>
 
@@ -118,6 +198,10 @@ const Footer = () => {
                   >
                     Send Message
                   </button>
+
+                  {status && (
+                    <p className="text-center mt-2 text-sm text-green-400">{status}</p>
+                  )}
                 </form>
               </motion.div>
             </motion.div>
@@ -129,4 +213,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
