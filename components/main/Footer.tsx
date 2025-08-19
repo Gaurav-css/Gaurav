@@ -60,7 +60,7 @@ const Footer = () => {
           <div className="min-w-[200px] h-auto flex flex-col items-center justify-start">
             <div className="font-bold text-[16px]">Community</div>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Gaurav-css"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center my-[15px] text-[15px] hover:underline"
