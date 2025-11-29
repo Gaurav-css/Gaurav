@@ -11,7 +11,10 @@ import {
   FaRocket,
   FaUserAstronaut,
   FaCertificate,
-  FaAward
+  FaAward,
+  FaBriefcase,
+  FaCalendarAlt,
+  FaMapMarkerAlt
 } from "react-icons/fa";
 import {
   MdSecurity,
@@ -86,6 +89,12 @@ const Navbar = () => {
               <MdOutlineEngineering className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-4 h-4 md:w-5 md:h-5 text-black opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 rotate-12 delay-75" />
               <FaGlobeAmericas className="absolute -top-3 -left-1 md:-top-4 md:-left-2 w-4 h-4 md:w-5 md:h-5 text-black opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 rotate-45 delay-100" />
               Skills
+            </a>
+            <a href="#internships" className="group relative cursor-pointer px-3 py-2 md:px-6 md:py-2 rounded-full hover:bg-white/20 hover:backdrop-blur-md hover:scale-110 hover:text-black transition-all duration-300 font-bold text-xs md:text-base font-surgena flex items-center gap-2 md:gap-5">
+              <FaBriefcase className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-4 h-4 md:w-5 md:h-5 text-black opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 -rotate-12" />
+              <FaCalendarAlt className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-4 h-4 md:w-5 md:h-5 text-black opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 rotate-12 delay-75" />
+              <FaMapMarkerAlt className="absolute -top-3 -left-1 md:-top-4 md:-left-2 w-4 h-4 md:w-5 md:h-5 text-black opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 rotate-45 delay-100" />
+              Internships
             </a>
             <a href="#projects" className="group relative cursor-pointer px-3 py-2 md:px-6 md:py-2 rounded-full hover:bg-white/20 hover:backdrop-blur-md hover:scale-110 hover:text-black transition-all duration-300 font-bold text-xs md:text-base font-surgena flex items-center gap-2 md:gap-2">
               <MdSecurity className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-4 h-4 md:w-5 md:h-5 text-black opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
