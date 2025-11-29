@@ -50,7 +50,7 @@ const HeroContent = () => {
 
         <motion.a
           variants={slideInFromLeft(1)}
-          href="/Gaurav's Resume.pdf"
+          href="/Gaurav.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="py-3 px-6 text-center text-black font-bold cursor-pointer rounded-lg max-w-[200px] bg-brand-green border-2 border-black shadow-hard hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
