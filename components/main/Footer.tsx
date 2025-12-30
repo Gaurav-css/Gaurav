@@ -119,7 +119,7 @@ const Footer = () => {
               href="mailto:gky89552@gmail.com"
               className="flex items-center my-[10px] text-[15px] hover:underline hover:text-brand-green transition-colors font-medium"
             >
-              gky89552@gmail.com
+              gky895522@gmail.com
             </a>
           </div>
         </div>
