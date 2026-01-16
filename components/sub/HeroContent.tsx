@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import {
   slideInFromLeft,
@@ -8,14 +8,16 @@ import {
   slideInFromTop,
 } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import Spline from "@splinetool/react-spline"; // ✅ Correct import
+
+// Lazy load Spline for better performance
+const Spline = lazy(() => import("@splinetool/react-spline"));
 
 const HeroContent = () => {
   return (
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex flex-col lg:flex-row items-center justify-center px-5 lg:px-20 mt-20 lg:mt-40 w-full z-[20] scale-[0.86]"
+      className="flex flex-col lg:flex-row items-center justify-center px-5 lg:px-20 mt-5 lg:-mt-10 w-full z-[20] scale-[0.86]"
     >
       {/* Left Content */}
       <div className="h-full w-full lg:w-1/2 flex flex-col gap-5 justify-center text-start -mt-20">
@@ -33,7 +35,7 @@ const HeroContent = () => {
         >
           <span>
             Gaurav
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-500">
+            <span style={{ color: '#84cc16' }}>
               {" "}Kumar{" "}
             </span>
             Yadav
@@ -59,13 +61,19 @@ const HeroContent = () => {
         </motion.a>
       </div>
 
-      {/* Right Content: Robot */}
+      {/* Right Content: Robot - Lazy Loaded */}
       <motion.div
         variants={slideInFromRight(0.8)}
         className="w-full lg:w-1/2 h-[500px] lg:h-[695px] hidden lg:flex justify-center items-center relative"
       >
-        <div className="relative  h-full right-20">
-          <Spline scene="https://prod.spline.design/IZ2Nzq20xExkboUD/scene.splinecode" />
+        <div className="relative h-full right-20">
+          <Suspense fallback={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin" />
+            </div>
+          }>
+            <Spline scene="https://prod.spline.design/IZ2Nzq20xExkboUD/scene.splinecode" />
+          </Suspense>
         </div>
       </motion.div>
     </motion.div>

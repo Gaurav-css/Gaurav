@@ -66,7 +66,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ✅ Hide the Next.js Dev Tools Toast/Badge */
 [data-nextjs-toast],
 [data-nextjs-dev-overlay],
 [data-nextjs-devtools-button],
@@ -76,4 +75,40 @@ html {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+/* Scroll Performance Optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU Acceleration for smooth scrolling */
+main,
+section {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: auto;
+}
+
+/* Optimize fixed elements */
+nav,
+.fixed {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce paint on scroll */
+.backdrop-blur-md,
+.backdrop-blur-xl,
+.backdrop-blur-sm {
+  will-change: backdrop-filter;
 }

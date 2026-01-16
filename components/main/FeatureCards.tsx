@@ -11,28 +11,30 @@ import Image from "next/image";
 
 const projects = [
     {
-        title: "Bank Management",
-        subtitle: "System",
-        badge: "Java & MySQL",
-        description: "The project is a bank management system that allows users to manage accounts, perform transactions, and view financial data through a web based interface.",
+        title: "Task Management",
+        subtitle: "Web App",
+        badge: "AI Powered",
+        description: "A full-stack task management web application powered by AI. Manage your tasks efficiently with smart suggestions, automated prioritization, and intelligent scheduling features.",
         bg: "bg-[#E4D9F5]", // Purple
         buttonColor: "bg-brand-green",
         icon: CodeBracketIcon,
-        tech: ["Frontend", "MySQL", "Database"],
-        image: "/java.png",
-        githubLink: "https://github.com/yourusername/bank-management"
+        tech: ["React", "Node.js", "AI"],
+        image: "/image.png",
+        githubLink: "https://github.com/Gaurav-css/MiniTask.git",
+        liveLink: "https://mini-task-jet.vercel.app/"
     },
     {
-        title: "Invigilation Management",
-        subtitle: "System",
-        badge: "Automation Platform",
-        description: "A web-based platform that automates exam duty allocation, allowing teachers to choose available invigilation slots based on admin-defined conditions.",
+        title: "PreviewHost",
+        subtitle: "Frontend Hosting Platform",
+        badge: "Instant Sharing",
+        description: "Localhost, meet the Public Web. Upload your HTML, CSS, and JS. Get a secure, shareable link instantly. Perfect for feedback, testing, and demos. No CLI needed.",
         bg: "bg-[#C4DBFA]", // Blue
         buttonColor: "bg-[#C3F53C]", // Lime
         icon: CommandLineIcon,
-        tech: ["Frontend", "MySQL", "Database"],
-        image: "/java.png",
-        githubLink: "https://github.com/yourusername/invigilation-system"
+        tech: ["HTML", "CSS", "JavaScript"],
+        image: "/preview.png",
+        githubLink: "https://github.com/Gaurav-css/preview-hosting",
+        liveLink: "https://preview-hosting.vercel.app/"
     },
     {
         title: "Major Project",
@@ -87,10 +89,17 @@ const FeatureCards = () => {
                             </div>
 
                             <div className="flex flex-wrap gap-3 mt-2">
-                                <button className={`w-max px-5 py-2.5 md:px-6 md:py-3 ${project.buttonColor} border-2 border-black shadow-hard rounded-xl font-bold text-sm md:text-base hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 text-black`}>
-                                    <project.icon className="w-4 h-4" />
-                                    View Project
-                                </button>
+                                {(project as any).liveLink ? (
+                                    <a href={(project as any).liveLink} target="_blank" rel="noopener noreferrer" className={`w-max px-5 py-2.5 md:px-6 md:py-3 ${project.buttonColor} border-2 border-black shadow-hard rounded-xl font-bold text-sm md:text-base hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 text-black`}>
+                                        <project.icon className="w-4 h-4" />
+                                        Live Demo
+                                    </a>
+                                ) : (
+                                    <button className={`w-max px-5 py-2.5 md:px-6 md:py-3 ${project.buttonColor} border-2 border-black shadow-hard rounded-xl font-bold text-sm md:text-base hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 text-black`}>
+                                        <project.icon className="w-4 h-4" />
+                                        View Project
+                                    </button>
+                                )}
                                 {project.githubLink && (
                                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="w-max px-5 py-2.5 md:px-6 md:py-3 bg-white border-2 border-black shadow-hard rounded-xl font-bold text-sm md:text-base hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 text-black">
                                         <CodeBracketIcon className="w-4 h-4" />
